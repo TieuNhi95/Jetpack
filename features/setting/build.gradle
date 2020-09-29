@@ -1,0 +1,71 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+        // for view binding :
+        // viewBinding = true
+    }
+
+    kotlinOptions {
+        jvmTarget = versions.java
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':libraries:core')
+
+    /* Dagger2  */
+    implementation libraries.hilt
+    kapt libraries.hiltSupport
+    implementation libraries.hiltViewModel
+    kapt libraries.hiltCompiler
+
+    implementation libraries.kotlin
+
+    //    //ViewModel
+    implementation libraries.viewmodel
+    kapt libraries.liveData
+
+    //view
+    implementation libraries.material
+    implementation libraries.constraintlayout
+    implementation libraries.timber
+
+    // Loading Image
+    implementation libraries.glide
+    kapt libraries.glideCompiler
+    // Network
+    implementation libraries.retrofit
+    implementation libraries.gson
+    implementation libraries.retrofitRx
+    implementation libraries.interceptor
+}

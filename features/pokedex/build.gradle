@@ -1,0 +1,93 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility = versions.java
+        targetCompatibility = versions.java
+    }
+    kotlinOptions {
+        jvmTarget = versions.java.toString()
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':libraries:core')
+
+    implementation libraries.hilt
+    kapt libraries.hiltSupport
+    implementation libraries.hiltViewModel
+    kapt libraries.hiltCompiler
+
+    implementation libraries.kotlin
+    implementation libraries.fragment
+
+    //view
+    implementation libraries.material
+    implementation libraries.constraintlayout
+
+    //navigation
+    implementation libraries.navigation
+    implementation libraries.navigationUi
+
+    // RxJava2
+    implementation libraries.rxjava
+    implementation libraries.rxandroid
+    implementation libraries.coroutines
+    implementation libraries.coroutinesCore
+
+
+    //network
+    implementation libraries.retrofit
+    implementation libraries.gson
+    implementation libraries.retrofitRx
+    implementation libraries.interceptor
+
+    //logger
+    implementation libraries.timber
+
+    implementation libraries.viewmodel
+    implementation libraries.lifecycleExt
+    kapt libraries.liveData
+
+    //permission
+    implementation libraries.rxPermission
+
+    //anim : motion layout
+//    api libraries.motion
+
+    implementation "com.google.firebase:firebase-messaging:${versions.fcm}"
+
+    implementation libraries.glide
+    kapt libraries.glideCompiler
+
+
+}

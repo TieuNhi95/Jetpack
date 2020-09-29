@@ -1,0 +1,13 @@
+<resources>
+    <!--    common-->
+
+    <string name="content_famu">連動が完了しています\nファムからご利用ください</string>
+    <string name="content_mocom">連動が完了しています\nモコムからご利用ください</string>
+    <string name="return_to_famu">アプリを閉じて モコム に戻る</string>
+    <string name="return_to_mocom">アプリを閉じて ファム に戻る</string>
+    <string name="enable_high_quality">高画質モード</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
+
+
+</resources>

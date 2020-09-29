@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.setting.model.SettingItem" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_item_setting"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/text_12"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_item_setting"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="0dp"
+            android:text="@{viewModel.name}"
+            android:textColor="@color/color_title_setting"
+            android:textSize="@dimen/text_size_10" />
+
+        <View
+            android:id="@+id/line_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_line_divide" />
+    </RelativeLayout>
+
+</layout>
